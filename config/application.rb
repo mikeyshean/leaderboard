@@ -22,7 +22,7 @@ module Leaderboard
 
     config.middleware.insert_before 0, "Rack::Cors" do
       allow do
-        origins 'localhost:3000', '23.235.46.133'
+        origins 'localhost:3000', 'mikeyshean.com', 'http://www.mikeyshean.com'
         resource '*', :headers => :any, :methods => [:get, :post, :options]
       end
     end
