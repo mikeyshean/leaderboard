@@ -2,12 +2,13 @@ class LeadersController < ActionController::Base
 
 
   def create
-    @leader = Leader.new(leader_params)
+    leader = Leader.new(leader_params)
 
-    if @leader.save
-      render json: "Success!"
+    if leader.save
+      @leaders = Leader.all.order(score: :desc)
+      render json: @leaders
     else
-      render json: "Fail!"
+      render json: {}
     end
   end
 
