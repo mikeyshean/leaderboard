@@ -22,11 +22,10 @@ module Leaderboard
 
     config.middleware.insert_before 0, "Rack::Cors" do
       allow do
-        origins 'localhost:3000', 'mikeyshean.com'
+        origins 'localhost:3000', 'http://www.mikeyshean.com'
         resource '*', :headers => :any, :methods => [:get, :post, :options]
       end
     end
-    # , 'http://www.mikeyshean.com'
 
     # Do not swallow errors in after_commit/after_rollback callbacks.
     config.active_record.raise_in_transactional_callbacks = true
