@@ -21,6 +21,6 @@ class LeadersController < ActionController::Base
   private
 
   def leader_params
-    params.require(:leader).permit(:name, :score)
+    params.permit(:name, :score)
   end
 end
