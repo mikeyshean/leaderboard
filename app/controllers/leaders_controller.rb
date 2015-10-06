@@ -5,7 +5,7 @@ class LeadersController < ActionController::Base
     leader = Leader.new(leader_params)
 
     if leader.save
-      @leaders = Leader.all.order(score: :desc)
+      @leaders = Leader.all.order(score: :desc).limit(10)
       render json: @leaders
     else
       render json: {}
@@ -13,7 +13,7 @@ class LeadersController < ActionController::Base
   end
 
   def index
-    @leaders = Leader.all.order(score: :desc)
+    @leaders = Leader.all.order(score: :desc).limit(10)
 
     render json: @leaders
   end
