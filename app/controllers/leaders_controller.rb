@@ -4,12 +4,10 @@ class LeadersController < ActionController::Base
   def create
     leader = Leader.new(leader_params)
 
-    if leader.save
-      @leaders = Leader.all.order(score: :desc).limit(10)
-      render json: @leaders
-    else
-      render json: {}
-    end
+    leader.save
+    @leaders = Leader.all.order(score: :desc).limit(10)
+
+    render json: @leaders
   end
 
   def index
