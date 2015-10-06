@@ -41,7 +41,7 @@ Rails.application.routes.draw do
 end
 ```
 #### Controller:
- - [leaders_controller.rb]([routes.rb](https://github.com/mikeyshean/leaderboard/blob/master/config/routes.rb#L1-L3)
+ - [leaders_controller.rb](https://github.com/mikeyshean/leaderboard/blob/master/config/routes.rb#L1-L3)
  - Define your controller actions to create new entries and retrieve all leaders
 
 ```
