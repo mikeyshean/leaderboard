@@ -1,7 +1,7 @@
 # Leaderboard
 
 
-*Leaderboard* is a Rails API that allows you to incorporate a high-score leaderboard in your browser-based games.
+*Leaderboard* is a Rails API you can deploy as is (or customize) to incorporate a high-score leaderboard in your browser-based games.
 
 
 ![leaderboard]
@@ -83,7 +83,9 @@ end
 
 
 #### Migration
-[create_leaders.rb](https://github.com/mikeyshean/leaderboard/blob/master/db/migrate/20151006030315_create_leaders.rb#L1-L9)
+- [create_leaders.rb](https://github.com/mikeyshean/leaderboard/blob/master/db/migrate/20151006030315_create_leaders.rb#L1-L9)
+- Add columns to store the player's name and score
+
 ```
 class CreateLeaders < ActiveRecord::Migration
   def change
@@ -97,7 +99,8 @@ end
 ```
 
 #### Routes:
- [routes.rb](https://github.com/mikeyshean/leaderboard/blob/master/config/routes.rb#L1-L3)
+ - [routes.rb](https://github.com/mikeyshean/leaderboard/blob/master/config/routes.rb#L1-L3)
+ - We'll only need to be able to add new scores and retrieve the leaderboard scores.
 
 ```
 Rails.application.routes.draw do
@@ -106,7 +109,8 @@ end
 ```
 #### Controller:
  - [leaders_controller.rb](https://github.com/mikeyshean/leaderboard/blob/master/config/routes.rb#L1-L3)
- - Define your controller actions to create new entries and retrieve the **TOP 10** leaders
+ - Define the controller actions to create new entries and retrieve the **TOP 10** leaders
+ - I have both actions returning the **TOP 10** scores in order to render it in both cases
 
 ```
 class LeadersController < ActionController::Base
@@ -142,7 +146,7 @@ end
 
 ## AJAX Requests
 
-- jQuery AJAX requests to the *GET* and *POST* API routes
+- jQuery AJAX requests to the GET and POST API routes
 
 ```
   GameView.prototype.getLeaders = function () {
