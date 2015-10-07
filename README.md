@@ -121,7 +121,7 @@ class LeadersController < ActionController::Base
   def create
     leader = Leader.new(leader_params)
 
-    if leader.name == "Enter your name" || leader.name.strip.empty?
+    if leader.name.strip.empty?
       leader.name = "Anonymous"
     end
 
@@ -159,7 +159,7 @@ end
      dataType: 'json',
      success:function(leaders){
          // do something with leaders here
-     }.bind(this)
+     }
    });
   };
 
@@ -175,7 +175,7 @@ end
      dataType: 'json',
      success:function(leaders){
          // do something with leaders here
-     }.bind(this)
+     }
    });
   };
 ```
