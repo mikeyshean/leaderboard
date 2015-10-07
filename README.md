@@ -9,7 +9,7 @@
 
 ## Quick Start
 
-1. Clone or [download](https://github.com/mikeyshean/leaderboard/archive/master.zip_) this repo
+1. Clone or [download](https://github.com/mikeyshean/leaderboard/archive/master.zip) this repo
 2.  Add the origin that you will be making requests **FROM** to the [application.rb](https://github.com/mikeyshean/leaderboard/blob/master/config/application.rb#L23-L28) configuration:
 
     ```ruby
