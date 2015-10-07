@@ -9,44 +9,47 @@
 
 ## Quick Start
 
-1.  Clone or [download](https://github.com/mikeyshean/leaderboard/archive/master.zip_) this repo
+1. Clone or [download](https://github.com/mikeyshean/leaderboard/archive/master.zip_) this repo
 2.  Add the origin that you will be making requests **FROM** to the [application.rb](https://github.com/mikeyshean/leaderboard/blob/master/config/application.rb#L23-L28) configuration:
-```
-config.middleware.insert_before 0, "Rack::Cors" do
-  allow do
-    origins 'your_domain_here'
-    resource '*', :headers => :any, :methods => [:get, :post, :options]
-  end
-end
-```
-3.  Deploy to [heroku](www.heroku.com) or hosting of your choice
-4.  Insert new scores by providing a **name** and **score**:
-```
-    var data = {}
-    data["name"] = name
-    data["score"] = score
 
-    $.ajax({
-      type: "POST",
-      data: data,
-      url:"your_production_url",
-      dataType: 'json',
-      success:function(leaders){
-        // do something with leaders here
-      }.bind(this)
-    });
-```
-5.  Fetch **Top 10** highest scores:
-```
-    $.ajax({
-      type: "GET",
-      url:"your_production_url",
-      dataType: 'json',
-      success:function(leaders){
-        // do something with leaders here
-      }.bind(this)
-   });
-```
+    ```ruby
+    config.middleware.insert_before 0, "Rack::Cors" do
+      allow do
+        origins 'your_domain_here'
+        resource '*', :headers => :any, :methods => [:get, :post, :options]
+      end
+    end
+    ```
+3.  Deploy to [heroku](www.heroku.com) or hosting of your choice
+4. Insert new scores by providing a **name** and **score**:
+
+    ```javascript
+        var data = {}
+        data["name"] = name
+        data["score"] = score
+
+        $.ajax({
+          type: "POST",
+          data: data,
+          url:"your_production_url",
+          dataType: 'json',
+          success:function(leaders){
+            // do something with leaders here
+          }.bind(this)
+        });
+    ```
+-  Fetch **Top 10** highest scores:
+
+    ```javascript
+        $.ajax({
+          type: "GET",
+          url:"your_production_url",
+          dataType: 'json',
+          success:function(leaders){
+            // do something with leaders here
+          }.bind(this)
+       });
+    ```
 #### *Note:*  
   - Names that do not include any characters will be converted to "Anonymous"
   - Both POST and GET requests will return the most current **TOP 10** leaders.
@@ -59,7 +62,7 @@ end
 ### Gemfile
 - Add `'rack-cors'` to your Gemfile and run `$ bundle install`
 
-```
+```ruby
 gem 'rack-cors' => 'rack/cors'
 ```
 
@@ -69,7 +72,7 @@ gem 'rack-cors' => 'rack/cors'
 - You may also define the type of requests allowed
 - For dev purposes you can use a wildcard to allow all origins `"*"`
 
-```
+```ruby
 config.middleware.insert_before 0, "Rack::Cors" do
   allow do
     origins '*', 'localhost:3000', 'your_domain_here'
@@ -86,7 +89,7 @@ end
 - [create_leaders.rb](https://github.com/mikeyshean/leaderboard/blob/master/db/migrate/20151006030315_create_leaders.rb#L1-L9)
 - Add columns to store the player's name and score
 
-```
+```ruby
 class CreateLeaders < ActiveRecord::Migration
   def change
     create_table :leaders do |t|
@@ -102,7 +105,7 @@ end
  - [routes.rb](https://github.com/mikeyshean/leaderboard/blob/master/config/routes.rb#L1-L3)
  - We'll only need to be able to add new scores and retrieve the leaderboard scores.
 
-```
+```ruby
 Rails.application.routes.draw do
   resources :leaders, only: [:create, :index]
 end
@@ -112,7 +115,7 @@ end
  - Define the controller actions to create new entries and retrieve the **TOP 10** leaders
  - I have both actions returning the **TOP 10** scores in order to render it in both cases
 
-```
+```ruby
 class LeadersController < ActionController::Base
 
   def create
@@ -148,7 +151,7 @@ end
 
 - jQuery AJAX requests to the GET and POST API routes
 
-```
+```javascript
   GameView.prototype.getLeaders = function () {
     $.ajax({
      type: "GET",
