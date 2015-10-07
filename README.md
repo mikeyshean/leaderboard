@@ -36,7 +36,7 @@ end
       }.bind(this)
     });
 ```
-5.  Fetch **Top 10** highest scores with names:
+5.  Fetch **Top 10** highest scores:
 ```
     $.ajax({
       type: "GET",
