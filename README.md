@@ -35,7 +35,7 @@
           dataType: 'json',
           success:function(leaders){
             // do something with leaders here
-          }.bind(this)
+          }
         });
     ```
 -  Fetch **Top 10** highest scores:
@@ -47,7 +47,7 @@
           dataType: 'json',
           success:function(leaders){
             // do something with leaders here
-          }.bind(this)
+          }
        });
     ```
 #### *Note:*  
