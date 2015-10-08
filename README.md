@@ -53,6 +53,7 @@
 #### *Note:*  
   - Names that do not include any characters will be converted to "Anonymous"
   - Both POST and GET requests will return the most current **TOP 10** leaders.
+  - This should be used for ***entertainment purposes only***.  It would be trivial to manipulate the score stored in the data object prior to sending the AJAX request
 
 
 ## Full Instructions
@@ -103,7 +104,7 @@ end
 
 #### Routes:
  - [routes.rb](https://github.com/mikeyshean/leaderboard/blob/master/config/routes.rb#L1-L3)
- - We'll only need to be able to add new scores and retrieve the leaderboard scores.
+ - We'll only need to add new scores and retrieve the leaderboard scores.
 
 ```ruby
 Rails.application.routes.draw do
